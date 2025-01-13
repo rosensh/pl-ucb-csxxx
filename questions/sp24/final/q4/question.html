@@ -1,0 +1,130 @@
+<pl-question-panel>
+    <p>
+        (a) Implement <code>cycle</code>, which takes a non-empty finite linked list <code>s</code> (a <code>Link</code> instance). It returns a linked list in which the first <code>Link</code> of <code>s</code> has been moved to become the last <code>Link</code> of the result. If <code>s</code> has only one element, then it is not moved. The <code>Link</code> class appears on Page 2 of the Midterm 2 Study Guide. A linked list is finite if it contains a <code>Link</code> that has <code>Link.empty</code> as its rest attribute rather than having a cyclical structure.
+    </p>
+    <pre>
+def cycle(s):
+    """Move the first Link of a non-empty finite linked list to be the last.
+    >>> a = Link(3, Link(5, Link(7, Link(9)))) # <3 5 7 9>
+    >>> print(cycle(a))
+    <5 7 9 3>
+    >>> print(a)
+    <3>
+    """
+    assert isinstance(s, Link)
+    if s.rest is Link.empty:
+        return s
+    last = s
+    while last.rest is not Link.empty:
+        last = last.rest
+    s.rest, last.rest, result = _______ , _______ , _______  # (a), (b), (c)
+    return result
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (a):</p>
+        <pl-multiple-choice answers-name="a_i">
+            <pl-answer>s</pl-answer>
+            <pl-answer>s.rest</pl-answer>
+            <pl-answer>last</pl-answer>
+            <pl-answer>last.rest</pl-answer>
+            <pl-answer correct="true">Link.empty</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="a_ii">
+            <pl-answer correct="true">s</pl-answer>
+            <pl-answer>s.rest</pl-answer>
+            <pl-answer>last</pl-answer>
+            <pl-answer>last.rest</pl-answer>
+            <pl-answer>Link.empty</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="a_iii">
+            <pl-answer>s</pl-answer>
+            <pl-answer correct="true">s.rest</pl-answer>
+            <pl-answer>last</pl-answer>
+            <pl-answer>last.rest</pl-answer>
+            <pl-answer>Link.empty</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (b) Implement <code>repeat</code>, a generator function that takes a non-empty finite linked list <code>s</code> and a positive integer <code>k</code>. It yields <code>k</code> elements from <code>s</code>, restarting from the first element of <code>s</code> each time the end is reached. It is ok to mutate <code>s</code>. You may call <code>cycle</code>.
+    </p>
+    <pre>
+def repeat(s, k):
+    """Yield k items from a non-empty finite linked list, starting over as needed.
+    It is ok to mutate s in the process.
+    >>> t = repeat(Link(4, Link(2, Link(6))), 10)
+    >>> [next(t), next(t), next(t), next(t)]
+    [4, 2, 6, 4]
+    >>> list(t) # 6 of the 10 elements remain
+    [2, 6, 4, 2, 6, 4]
+    """
+    for x in _______:  # (d)
+        yield _______  # (e)
+        _______        # (f)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (b)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (d):</p>
+        <pl-multiple-choice answers-name="b_i">
+            <pl-answer>s</pl-answer>
+            <pl-answer>iter(s)</pl-answer>
+            <pl-answer>next(s)</pl-answer>
+            <pl-answer correct="true">range(k)</pl-answer>
+            <pl-answer>range(s)</pl-answer>
+            <pl-answer>range(len(s))</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (e):</p>
+        <pl-multiple-choice answers-name="b_ii">
+            <pl-answer>s</pl-answer>
+            <pl-answer correct="true">s.first</pl-answer>
+            <pl-answer>s.rest.first</pl-answer>
+            <pl-answer>from repeat(s.rest, k-1)</pl-answer>
+            <pl-answer>x</pl-answer>
+            <pl-answer>s[x]</pl-answer>
+            <pl-answer>s[x % len(s)]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (f):</p>
+        <pl-multiple-choice answers-name="b_iii">
+            <pl-answer>cycle(s)</pl-answer>
+            <pl-answer correct="true">s = cycle(s)</pl-answer>
+            <pl-answer>cycle(s.rest)</pl-answer>
+            <pl-answer>s = cycle(s.rest)</pl-answer>
+            <pl-answer>s.rest = cycle(s.rest)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>

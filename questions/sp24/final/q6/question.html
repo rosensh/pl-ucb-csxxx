@@ -1,0 +1,96 @@
+<pl-question-panel>
+    <p>
+        A nested list of numbers is a list containing numbers and nested lists of numbers. For example: <code>((7 5) 3 ((1)) 9)</code>.
+        Implement <code>truths</code>, which takes a nested list of numbers <code>s</code> and a one-argument procedure <code>f</code>. It returns the count of numbers <code>x</code> in <code>s</code> for which <code>(f x)</code> returns a true value.
+    </p>
+    <pre>
+scm> (define (eight? x) (and (number? x) (= x 8)))
+scm> (truths '(8 (8 ((3 8)) 8 ())) eight?)
+4
+scm> (truths '(8 (8 ((3 8)) 8 ())) number?)
+5
+
+Hint: The built-in <code>number?</code> procedure returns whether its argument is a number.
+
+(define (truths s f)
+    (if (null? s) 0
+        (+
+            (if (number? (car s)) _______ (truths _______ f))  ; first argument to +
+                                    (a)             (b)
+            _______ )))                                       ; second argument to +
+               (c)
+        </pre>
+</pl-question-panel>
+
+<!-- Part (a): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(a) Fill in blank (a):</p>
+        <pl-string-input answers-name="a" label="Fill in blank (a):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(b) Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="b">
+            <pl-answer>s</pl-answer>
+            <pl-answer correct="true">(car s)</pl-answer>
+            <pl-answer>(cdr s)</pl-answer>
+            <pl-answer>(list s)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(c) Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="c">
+            <pl-answer>nil</pl-answer>
+            <pl-answer>0</pl-answer>
+            <pl-answer>1</pl-answer>
+            <pl-answer>f</pl-answer>
+            <pl-answer>s</pl-answer>
+            <pl-answer>(f s)</pl-answer>
+            <pl-answer>truths</pl-answer>
+            <pl-answer correct="true">(truths (cdr s) f)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d): String input -->
+<pl-question-panel>
+    <p>
+        (d) This A+ question is not worth any points. It can only affect your course grade if you have a high A and might receive an A+. Finish the rest of the exam first!
+        <br>
+        Fill in blank (d) to implement <code>eights</code>, which returns the number of eights that appear in a row at the beginning of a nested list <code>s</code>.
+    </p>
+    <pre>
+scm> (eights '(8 8 8 3 8))
+3
+scm> (eights '((8 (8) 8) (3) 8 ()))
+3
+scm> (eights '(8 (8 ((8 3 8)) 8 ())))
+3
+scm> (eights '(7 (8 ((3 8)) 8 ())))
+0
+
+;;; Return the number of eights at the start of a nested list of numbers s.
+(define (eights s)
+(cond
+    ((null? s) 0)
+    ((eight? (car s)) (+ 1 (eights (cdr s))))
+    ((number? (car s)) 0)
+    (else (let ((k (eights (car s)))) (+ k _______ ) ))))  
+                                             (d)
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <p>(d) Fill in blank (d):</p>
+        <pl-string-input answers-name="d" label="Fill in blank (d):"></pl-string-input>
+    </div>
+</div>

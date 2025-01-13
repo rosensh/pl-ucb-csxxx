@@ -1,0 +1,243 @@
+<pl-question-panel>
+    <p>
+        A dice integer is a positive integer whose digits are all greater than or equal to 1 and all less than or equal to 6.
+    </p>
+</pl-question-panel>
+
+<pl-question-panel>
+    <p>
+        (a) <br>
+        Implement <code>streak</code>, which takes a positive integer <code>n</code>. It returns True if <code>n</code> is a dice integer whose digits are all the same and False otherwise.
+    </p>
+    <pre>
+def streak(n):
+    """Return whether positive n is a dice integer in which all the digits are the same.
+    >>> streak(22222)
+    True
+    >>> streak(4)
+    True
+    >>> streak(22322) # 2 and 3 are different digits.
+    False
+    >>> streak(99999) # 9 is not allowed in a dice integer.
+    False
+    """
+    d = n % 10
+    if _______:  # (a)
+        return False
+    while n:
+        if _______:  # (b)
+            _______  # (c)
+        n = n // 10
+    return _______  # (d)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (a):</p>
+        <pl-multiple-choice answers-name="a_i">
+            <pl-answer>d < 1 and d > 6</pl-answer>
+            <pl-answer correct="true">d < 1 or d > 6</pl-answer>
+            <pl-answer>n < 1 and n > 6</pl-answer>
+            <pl-answer>n < 1 or n > 6</pl-answer>
+            <pl-answer>min(n) < 1 and max(n) > 6</pl-answer>
+            <pl-answer>min(n) < 1 or max(n) > 6</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(ii): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>Fill in blank (b):</p>
+        <pl-string-input answers-name="a_ii" label="Fill in blank (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (a)(iii): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="a_iii">
+            <pl-answer>d = n % 10</pl-answer>
+            <pl-answer>d = (n // 10) % 10</pl-answer>
+            <pl-answer>result = False</pl-answer>
+            <pl-answer correct="true">return False</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(iv): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iv. Fill in blank (d):</p>
+        <pl-multiple-choice answers-name="a_iv">
+            <pl-answer correct="true">True</pl-answer>
+            <pl-answer>result</pl-answer>
+            <pl-answer>d == n</pl-answer>
+            <pl-answer>d == n % 10</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(v): Multiple Choice -->
+<pl-question-panel>
+    <p>
+       Fill in the blank of <code>changes</code>, which takes a dice number <code>n</code>. It returns the number of digits of <code>n</code> that are different from the digit to their left.
+    </p>
+    <pre>
+def changes(n):
+    """Return the number of adjacent digits that are different in dice number n.
+    >>> changes(22222)
+    0
+    >>> changes(222255)
+    1
+    >>> changes(22322)
+    2
+    >>> changes(22366666622)
+    3
+    >>> changes(52431)
+    4
+    """
+    count = 0
+    while n >= 10:
+        if _______:  # (v)
+            count = count + 1
+        n = n // 10
+    return count
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <p>v. Fill in blank (v):</p>
+        <pl-multiple-choice answers-name="v">
+            <pl-answer>n != n % 100</pl-answer>
+            <pl-answer>n != n // 10</pl-answer>
+            <pl-answer>n != (n // 10) % 10</pl-answer>
+            <pl-answer>n != (n // 10) % 100</pl-answer>
+            <pl-answer>n % 10 != n % 100</pl-answer>
+            <pl-answer>n % 10 != n // 10</pl-answer>
+            <pl-answer correct="true">n % 10 != (n // 10) % 10</pl-answer>
+            <pl-answer>n % 10 != (n // 10) % 100</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b): String Input -->
+<pl-question-panel>
+    <p>
+        (b) Fill in the blank of <code>count_if</code>, which takes a one-argument function <code>f</code>. It returns a function that takes a positive integer <code>n</code> and returns the count of its digits for which <code>f</code> returns a true value.
+    </p>
+    <pre>
+def count_if(f):
+    """Return a function that takes a positive integer n and returns
+    the count of its digits for which f returns a true value.
+    >>> is_three = lambda d: d == 3
+    >>> count_threes = count_if(is_three)  # count_threes returns the number of threes in n
+    >>> count_threes(431663334231)  # 3 appears 5 times
+    5
+    """
+    def g(n):
+        count = 0
+        while n:
+            if _______:  # (b)
+                count += 1
+            n = n // 10
+        return count
+    return g
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-string-input answers-name="b" label="Fill in blank (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (c): Multiple Choice -->
+<pl-question-panel>
+    <p>
+        (c) Fill in the blank of <code>count_at_least</code>, which takes a positive integer <code>k</code>. It returns a function that takes a positive integer <code>n</code> and returns the count of its digits that are greater than or equal to <code>k</code>.
+    </p>
+    <pre>
+def count_at_least(k):
+    """Return a function that returns how many of the digits of its argument are at least k.
+    >>> above_3 = count_at_least(3)  # above_3 returns the # of digits greater than or equal to 3
+    >>> above_3(431663334231)
+    9
+    """
+    return count_if(_______)
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <p>(c) Fill in blank:</p>
+        <pl-multiple-choice answers-name="c">
+            <pl-answer>lambda: n % 10 >= k</pl-answer>
+            <pl-answer>lambda: n >= k</pl-answer>
+            <pl-answer>lambda: d >= k</pl-answer>
+            <pl-answer>lambda: d >= n % 10</pl-answer>
+            <pl-answer>lambda d: n % 10 >= k</pl-answer>
+            <pl-answer>lambda d: n >= k</pl-answer>
+            <pl-answer correct="true">lambda d: d >= k</pl-answer>
+            <pl-answer>lambda d: d >= n % 10</pl-answer>
+            <pl-answer>lambda d: lambda k: n % 10 >= k</pl-answer>
+            <pl-answer>lambda d: lambda k: n >= k</pl-answer>
+            <pl-answer>lambda d: lambda k: d >= k</pl-answer>
+            <pl-answer>lambda d: lambda k: d >= n % 10</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d): String Input -->
+<pl-question-panel>
+    <p>
+        (d) Fill in the blank of <code>times</code>, which takes a non-negative integer <code>k</code>, a positive integer <code>n</code>, and a digit <code>d</code>. It returns True if <code>n</code> contains digit <code>d</code> exactly <code>k</code> times and False otherwise. You may use <code>count_if</code>.
+    </p>
+    <pre>
+def times(k, n, d):
+    """Returns whether n contains digit d exactly k times.
+    >>> times(3, 6132344561, 4)  # 4 only appears 2 times
+    False
+    >>> times(3, 61323445614, 4)  # 4 appears exactly 3 times
+    True
+    """
+    return _______ 
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-string-input answers-name="d" label="Fill in the blank (d):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (e): String Input -->
+<pl-question-panel>
+    <p>
+        (e) This A+ question is not worth any points. It can only affect your course grade if you have a high A and might receive an A+. Finish the rest of the exam first! Fill in the blank to implement <code>streak</code> using <code>count_if</code>. You may not write else or * or **.
+    </p>
+    <pre>
+def streak(n):
+    """Return whether positive n is a dice integer in which all the digits are the same.
+    >>> streak(22222)
+    True
+    >>> streak(4)
+    True
+    >>> streak(22322)  # 2 and 3 are different digits.
+    False
+    >>> streak(99999)  # 9 is not allowed in a dice integer.
+    False
+    """
+    return _______ 
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-string-input answers-name="e" label="Fill in the blank (e):"></pl-string-input>
+    </div>
+</div>

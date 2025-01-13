@@ -1,0 +1,74 @@
+<pl-question-panel>
+    <p>
+        Assume the following code has been executed. The <code>Link</code> class appears on the midterm 2 study guide (page 2, left side).
+    </p>
+    <pre>
+def shake(it):
+    if it is not Link.empty and it.rest is not Link.empty:
+        if it.first + 1 < it.rest.first:
+            it.rest = Link(it.rest.first-1, it.rest)
+            shake(it)
+        else:
+            shake(it.rest)
+
+it = Link(2, Link(5, Link(7)))
+off = Link(1, it.rest)
+shake(it)
+
+def cruel(summer):
+    while summer is not Link.empty:
+        yield summer.first
+        summer = summer.rest
+        if summer is not Link.empty:
+            summer = summer.rest
+
+summer = Link(1, Link(2, Link(3, Link(4))))
+    </pre>
+    <p>Write the output printed for each expression below or <code>Error</code> if an error occurs.</p>
+</pl-question-panel>
+
+<!-- Part (a): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(a) <code>print(it)</code></p>
+        <pl-multiple-choice answers-name="a">
+            <pl-answer>&lt;2 5 7&gt;</pl-answer>
+            <pl-answer>&lt;2 4 5 7&gt;</pl-answer>
+            <pl-answer>&lt;2 4 5 6 7&gt;</pl-answer>
+            <pl-answer>&lt;2 3 4 5 7&gt;</pl-answer>
+            <pl-answer>&lt;2 4 3 5 7&gt;</pl-answer>
+            <pl-answer correct="true">&lt;2 3 4 5 6 7&gt;</pl-answer>
+            <pl-answer>&lt;2 4 3 5 6 7&gt;</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(b) <code>print(off)</code></p>
+        <pl-string-input answers-name="b" label="Write the output for (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (c): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(c) <code>print([x*x for x in cruel(summer)])</code></p>
+        <pl-string-input answers-name="c" label="Write the output for (c):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (d): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(d) What is the order of growth of the time it takes to evaluate <code>shake(Link(1, Link(n)))</code> in terms of <code>n</code>?</p>
+        <pl-multiple-choice answers-name="d">
+            <pl-answer>exponential</pl-answer>
+            <pl-answer>quadratic</pl-answer>
+            <pl-answer correct="true">linear</pl-answer>
+            <pl-answer>constant</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+

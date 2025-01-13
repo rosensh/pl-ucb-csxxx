@@ -1,0 +1,132 @@
+<pl-question-panel>
+    <p>
+        Implement <code>count_ones</code>, which takes a <code>Tree</code> instance <code>t</code>. It returns the number of nodes in <code>t</code> that have one child. The <code>Tree</code> class is defined on Page 2 of the Midterm 2 study guide.
+    </p>
+    <pre>
+def count_ones(t):
+    """Return the number of nodes that have one child.
+    >>> count_ones(Tree(1, [Tree(2), Tree(3, [Tree(4)])]))
+    1
+    >>> count_ones(Tree(1, [Tree(2), Tree(3), Tree(4)]))
+    0
+    >>> count_ones(Tree(1, [Tree(2, [Tree(3, [Tree(4)]), Tree(5, [Tree(6)])])]))
+    3
+    """
+    count = sum([ count_ones(_______) for b in t.branches if _______ ])  # (a), (b)
+    if _______:                                                         # (c)
+        return count + 1
+    else:
+        return count
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (a):</p>
+        <pl-multiple-choice answers-name="a_i">
+            <pl-answer correct="true">b</pl-answer>
+            <pl-answer>t</pl-answer>
+            <pl-answer>b.branches</pl-answer>
+            <pl-answer>t.branches</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="a_ii">
+            <pl-answer>True</pl-answer>
+            <pl-answer>is_leaf(b)</pl-answer>
+            <pl-answer>is_leaf(t)</pl-answer>
+            <pl-answer correct="true">len(b.branches) == 1</pl-answer>
+            <pl-answer>len(t.branches) == 1</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="a_iii">
+            <pl-answer>True</pl-answer>
+            <pl-answer>is_leaf(b)</pl-answer>
+            <pl-answer>is_leaf(t)</pl-answer>
+            <pl-answer>len(b.branches) == 1</pl-answer>
+            <pl-answer correct="true">len(t.branches) == 1</pl-answer>
+            <pl-answer>all([len(b.branches) == 1 for b in t.branches])</pl-answer>
+            <pl-answer>any([len(b.branches) == 1 for b in t.branches])</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (b) Implement <code>shorten</code>, which takes a <code>Tree</code> instance <code>t</code>. It removes all non-root nodes that have no siblings (no other nodes with the same parent), then returns <code>t</code>.
+    </p>
+    <pre>
+def shorten(t):
+    """Remove all non-root nodes with no siblings and return t.
+    >>> shorten(Tree(1, [Tree(2), Tree(3, [Tree(4)])]))
+    Tree(1, [Tree(2), Tree(3)])
+    >>> shorten(Tree(1, [Tree(2, [Tree(3, [Tree(4)])])]))
+    Tree(1)
+    >>> shorten(Tree(1, [Tree(2, [Tree(3), Tree(4)])]))
+    Tree(1, [Tree(3), Tree(4)])
+    >>> shorten(Tree(1, [Tree(2, [Tree(3, [Tree(4), Tree(5)]), Tree(6, [Tree(7)])])]))
+    Tree(1, [Tree(3, [Tree(4), Tree(5)]), Tree(6)])
+    """
+    _______:  # (d)
+    _______ = _______  # (e), (f)
+    for b in t.branches:
+        shorten(b)
+    return t
+    </pre>
+</pl-question-panel>
+
+<!-- Part (b)(i): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (d). Include the type of the control statement you are using (if, while, for, etc.).</p>
+        <pl-string-input answers-name="b_i" label="Fill in blank (d):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (e):</p>
+        <pl-multiple-choice answers-name="b_ii">
+            <pl-answer>t</pl-answer>
+            <pl-answer correct="true">t.branches</pl-answer>
+            <pl-answer>t.branches[i]</pl-answer>
+            <pl-answer>Tree(t.label, t.branches)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(iii): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (f). You may not use and, or, if, or lambda in your answer.</p>
+        <pl-string-input answers-name="b_iii" label="Fill in blank (f):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b)(iv): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iv. What order of growth describes the time it takes to execute <code>u = Tree(1, [t])</code> in terms of the number of nodes in a <code>Tree</code> instance <code>t</code>? Assume every non-leaf node in <code>t</code> has two children.</p>
+        <pl-multiple-choice answers-name="b_iv">
+            <pl-answer correct="true">constant</pl-answer>
+            <pl-answer>logarithmic</pl-answer>
+            <pl-answer>linear</pl-answer>
+            <pl-answer>quadratic</pl-answer>
+            <pl-answer>exponential</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+

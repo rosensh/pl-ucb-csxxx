@@ -1,0 +1,136 @@
+<pl-question-panel>
+    <p>
+       Definition: The increasing sublist of a sequence of numbers <code>s</code> is a list containing each element of <code>s</code> that is larger than all previous elements.
+    </p>
+</pl-question-panel>
+
+<pl-question-panel>
+    <p>
+        (a) Implement <code>up</code>, which takes a list of numbers <code>s</code> and returns its increasing sublist.
+    </p>
+    <pre>
+def up(s):
+    """Return the increasing sublist of list s.
+    >>> up([3, 1, 2, 5, 4, 5, 7, 6, 12, 11])
+    [3, 5, 7, 12]
+    """
+    result = _______  # (a)
+    for x in s:
+        if _______:  # (b)
+            result._______(x)  # (c)
+    return result
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (a):</p>
+        <pl-multiple-choice answers-name="a_i">
+            <pl-answer correct="true">[]</pl-answer>
+            <pl-answer>[[]]</pl-answer>
+            <pl-answer>[s]</pl-answer>
+            <pl-answer>[s[0]]</pl-answer>
+            <pl-answer>None</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="a_ii">
+            <pl-answer>result and s[0] < x</pl-answer>
+            <pl-answer>result and result[-1] < x</pl-answer>
+            <pl-answer>result or s[0] < x</pl-answer>
+            <pl-answer>result or result[-1] < x</pl-answer>
+            <pl-answer>not result and s[0] < x</pl-answer>
+            <pl-answer>not result and result[-1] < x</pl-answer>
+            <pl-answer>not result or s[0] < x</pl-answer>
+            <pl-answer correct="true">not result or result[-1] < x</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="a_iii">
+            <pl-answer correct="true">append</pl-answer>
+            <pl-answer>extend</pl-answer>
+            <pl-answer>pop</pl-answer>
+            <pl-answer>list</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (b) Implement <code>upiter</code>, which takes a finite iterator over numbers <code>t</code> and returns its increasing sublist. You may not call <code>up</code> in <code>upiter</code>.
+    </p>
+    <pre>
+def upiter(t):
+    """Return the increasing sublist of iterator t.
+    >>> upiter(iter([3, 1, 2, 5, 4, 5, 7, 6, 12, 11]))
+    [3, 5, 7, 12]
+    """
+    try:
+        x = next(t)
+    except StopIteration:
+        _______  # (d)
+    return _______ + _______ (filter( _______ , t))  # (e) (f) (g)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (b)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (d):</p>
+        <pl-multiple-choice answers-name="b_i">
+            <pl-answer>return t</pl-answer>
+            <pl-answer correct="true">return []</pl-answer>
+            <pl-answer>return None</pl-answer>
+            <pl-answer>x = t</pl-answer>
+            <pl-answer>x = []</pl-answer>
+            <pl-answer>x = None</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (e):</p>
+        <pl-multiple-choice answers-name="b_ii">
+            <pl-answer>x</pl-answer>
+            <pl-answer>next(t)</pl-answer>
+            <pl-answer correct="true">[x]</pl-answer>
+            <pl-answer>[next(t)]</pl-answer>
+            <pl-answer>[x, next(t)]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (f):</p>
+        <pl-multiple-choice answers-name="b_iii">
+            <pl-answer>max</pl-answer>
+            <pl-answer>list</pl-answer>
+            <pl-answer>iter</pl-answer>
+            <pl-answer>next</pl-answer>
+            <pl-answer correct="true">upiter</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(iv): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iv. Fill in blank (g). You may not call up.</p>
+        <pl-string-input answers-name="b_iv" label="Write the lambda expression for (g):"></pl-string-input>
+    </div>
+</div>

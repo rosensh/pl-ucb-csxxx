@@ -1,0 +1,52 @@
+<pl-question-panel>
+    <p>
+        This A+ question is not worth any points. It can only affect your course grade if you have a high A and might receive an A+. Finish the rest of the exam first!
+        <br>
+        Implement <code>swap</code>, which takes a <code>Tree</code> instance <code>t</code> with unique node labels and two different values <code>x</code> and <code>y</code> that are labels of <code>t</code>. It mutates the tree by placing the node labeled <code>x</code> in the position of the node labeled <code>y</code>, and the node labeled <code>y</code> in the position of the node labeled <code>x</code>.
+    </p>
+    <pre>
+Hint: The built-in <code>exec</code> function takes a string and executes the Python statement it contains in the current environment. For example:
+>>> exec('x = 1 + 1')
+>>> x
+2
+
+There are two blanks in <code>swap</code>, but they both contain exactly the same code, so you just need to write that code once.
+
+def find(t, x, s, f):
+    result = []
+    def g(t, s):
+        if t.label == x:
+            result.append(s)
+        for i in range(len(t.branches)):
+            g(t.branches[i], s + f(i))
+    g(t, s)
+    assert len(result) == 1, 'x should appear as a label exactly once'
+    return result[0]
+
+def swap(t, x, y):
+    """Swap the positions of the nodes labeled x and y in Tree t.
+    >>> n = Tree(1, [Tree(2, [Tree(3, [Tree(4)]), Tree(5)]), Tree(6, [Tree(7)])])
+    >>> b = n.branches[0].branches[0]
+    >>> b is n.branches[1]
+    False
+    >>> swap(n, 3, 6)
+    >>> n
+    Tree(1, [Tree(2, [Tree(6, [Tree(7)]), Tree(5)]), Tree(3, [Tree(4)])])
+    >>> b is n.branches[1]
+    True
+    """
+    px = find(t, x, _______ )
+    py = find(t, y, _______ )
+    exec(px + ',' + py + '=' + py + ',' + px)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>
+            (a) Write the code that fills in both blanks. (The same code fills in each blank.) The <code>find</code> function takes four arguments, so your answer should contain two expressions separated by a comma.
+        </p>
+        <pl-string-input answers-name="swap_a" label="Fill in both blanks:"></pl-string-input>
+    </div>
+</div>

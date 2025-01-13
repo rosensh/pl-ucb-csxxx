@@ -1,0 +1,91 @@
+<pl-question-panel>
+    <p>
+        If you sing lyrics into a mic, every connected speaker repeats them.<br>
+        A <code>Mic</code> instance has a dictionary <code>speakers</code> containing <code>Speaker</code> instances as values, each with its location (<code>str</code>) as its key. Its <code>sing</code> method takes a string <code>lyrics</code> and invokes the <code>repeat</code> method of each <code>Speaker</code> instance connected to it.<br>
+        A <code>Speaker</code> takes a <code>transform</code> function that takes and returns a string. To connect a <code>Speaker</code> instance to <code>m</code> (<code>Mic</code>) in a location (<code>str</code>), add that instance to the <code>speakers</code> dictionary of <code>m</code> in that location. To repeat a signal <code>s</code> (<code>str</code>), return the result of calling the speaker’s <code>transform</code> function on <code>s</code>.<br>
+        Every <code>Mic</code> starts connected to a <code>Speaker</code> in the <code>Front</code> location that repeats the exact same signal it receives.
+    </p>
+    <p>Implement the <code>Mic</code> and <code>Speaker</code> classes to match the doctests. The <code>str.lower</code> and <code>str.upper</code> functions return lowercased and uppercased versions of a string, respectively.</p>
+    <pre>
+class Mic:
+    """A microphone connected to speakers.
+    >>> m = Mic() # Front is connected automatically
+    >>> m.sing('Is this thing on?')
+    Front - Is this thing on?
+    >>> Speaker(str.lower).connect(m, 'Left Side')
+    >>> Speaker(str.upper).connect(m, 'Right Side')
+    >>> m.sing("You belong with me.")
+    Front - You belong with me.
+    Left Side - you belong with me.
+    Right Side - YOU BELONG WITH ME.
+    """
+    def __init__(self):
+        self.speakers = _______
+                          (a)
+    def sing(self, lyrics):
+        for k in self.speakers.keys(): # iterate over the keys of a dictionary
+            print(k, '-', _______.repeat(lyrics))
+                            (b)
+
+class Speaker:
+    def __init__(self, transform):
+        self.transform = transform
+    def connect(self, m, location):
+        _______
+          (c)
+    def repeat(self, s):
+        return _______
+                 (d)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(a)</p>
+        <pl-string-input answers-name="a" label="Fill in blank (a):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(b)</p>
+        <pl-multiple-choice answers-name="b">
+            <pl-answer>self</pl-answer>
+            <pl-answer>self.speaker</pl-answer>
+            <pl-answer>self.speakers</pl-answer>
+            <pl-answer correct="true">self.speakers[k]</pl-answer>
+            <pl-answer>self.speakers[k].self</pl-answer>
+            <pl-answer>speaker</pl-answer>
+            <pl-answer>speakers</pl-answer>
+            <pl-answer>speakers[k]</pl-answer>
+            <pl-answer>speakers[k].self</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(c)</p>
+        <pl-string-input answers-name="c" label="Fill in blank (c):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (d): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(d)</p>
+        <pl-multiple-choice answers-name="d">
+            <pl-answer>s</pl-answer>
+            <pl-answer>lyrics</pl-answer>
+            <pl-answer>transform</pl-answer>
+            <pl-answer>transform(s)</pl-answer>
+            <pl-answer>transform(lyrics)</pl-answer>
+            <pl-answer>self.transform</pl-answer>
+            <pl-answer correct="true">self.transform(s)</pl-answer>
+            <pl-answer>self.transform(lyrics)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>

@@ -1,0 +1,416 @@
+<pl-question-panel>
+    <p>
+        <strong>Definition:</strong> A strip is a list of integers in which each integer is one more than the last. For example, <code>[3, 4, 5, 6]</code> is a strip. Empty and one-element lists are strips.
+    </p>
+    <p>(a) Implement <code>is_strip</code>, which takes a list of integers <code>s</code> and returns whether it is a strip.
+    </p>
+    <pre>
+def is_strip(s):
+    """Return whether list s is a strip.
+    >>> is_strip([3, 4, 5, 6])
+    True
+    >>> is_strip([3, 3, 3]) # 3 after 3
+    False
+    >>> is_strip([3, 4, 5, 4, 6]) # 4 after 5
+    False
+    >>> is_strip([3, 4, 5, 5, 6]) # 5 after 5
+    False
+    >>> is_strip([3, 4, 5, 6, 8]) # 8 after 6
+    False
+    >>> is_strip([5])
+    True
+    >>> is_strip([])
+    True
+    """
+    assert type(s) == list
+    return _______ or s == list ( range ( _______ , _______ ))
+             (a)                            (b)       (c)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(i) Fill in blank (a).</p>
+        <pl-multiple-choice answers-name="ai">
+            <pl-answer correct="true">len(s) == 0</pl-answer>
+            <pl-answer>s[0] + 1 == s[1]</pl-answer>
+            <pl-answer>s[0] + 1 in s</pl-answer>
+            <pl-answer>s[0] + 1 in s[1:]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(ii): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(ii) Fill in blank (b).</p>
+        <pl-string-input answers-name="aii" label="Write your answer for (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (a)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iii) Fill in blank (c).</p>
+        <pl-multiple-choice answers-name="aiii">
+            <pl-answer>s</pl-answer>
+            <pl-answer>s[0]</pl-answer>
+            <pl-answer>s[1]</pl-answer>
+            <pl-answer>s[0] + 1</pl-answer>
+            <pl-answer correct="true">s[0] + len(s)</pl-answer>
+            <pl-answer>s[len(s) - 1]</pl-answer>
+            <pl-answer>s[1] - s[0]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        Implement <code>drip</code>, which takes two non-empty lists of integers <code>s</code> and <code>t</code>. It returns <code>True</code> if there is a strip containing all and only the elements of <code>s</code> and <code>t</code> starting with <code>s[0]</code> in which the elements of <code>s</code> appear in order and the elements of <code>t</code> appear in order. It returns <code>False</code> otherwise.
+    </p>
+    <pre>
+def drip(s, t):
+    """Return whether there is a strip made out of interleaving s and t.
+    >>> drip([1, 3, 5], [2, 4, 6]) # 1 2 3 4 5 6
+    True
+    >>> drip([1, 4, 5], [2, 3, 6]) # 1 2 3 4 5 6
+    True
+    >>> drip([1, 2, 3], [4, 5, 6]) # 1 2 3 4 5 6
+    True
+    >>> drip([2, 4, 5], [1, 3, 6]) # No strip starting with 2 can contain 1
+    False
+    >>> drip([1, 2, 4, 5], [1, 3, 6]) # No strip can contain 1 and 1
+    False
+    >>> drip([1, 4, 5], [2, 3, 7]) # No strip can contain 5 and 7 but no 6
+    False
+    >>> drip([1, 5, 4], [2, 3, 6]) # No strip can contain 5 before 4
+    False
+    >>> drip([2], [3, 4, 5]) # 2 3 4 5
+    True
+    >>> drip([1], [2, 3, 5]) # No strip can contain 3 and 5 but no 4
+    False
+    """
+    while s and t:
+        if s[0] + 1 == t[0]:
+            s, t = _______  # The next element of the strip is in t
+                    (a)
+        elif _______:
+              (b)
+            s = s[1:]  # The next element of the strip is in s
+        else:
+            return _______
+                    (c)
+    return _______
+             (d)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (b)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(i) Fill in blank (a).</p>
+        <pl-multiple-choice answers-name="a">
+            <pl-answer>t, s</pl-answer>
+            <pl-answer correct="true">t, s[1:]</pl-answer>
+            <pl-answer>t[1:], s</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(ii): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(ii) Fill in blank (b).</p>
+        <pl-string-input answers-name="b" label="Write your answer for (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iii) Fill in blank (c).</p>
+        <pl-multiple-choice answers-name="c">
+            <pl-answer correct="true">False</pl-answer>
+            <pl-answer>s[0] != t[0]</pl-answer>
+            <pl-answer>is_strip(s) or is_strip(t)</pl-answer>
+            <pl-answer>not (is_strip(s) or is_strip(t))</pl-answer>
+            <pl-answer>is_strip(s) and is_strip(t)</pl-answer>
+            <pl-answer>not (is_strip(s) and is_strip(t))</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b)(iv): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iv) Fill in blank (d).</p>
+        <pl-multiple-choice answers-name="d">
+            <pl-answer>True</pl-answer>
+            <pl-answer>is_strip(s)</pl-answer>
+            <pl-answer>is_strip(t)</pl-answer>
+            <pl-answer>is_strip(s) or is_strip(t)</pl-answer>
+            <pl-answer>not (is_strip(s) or is_strip(t))</pl-answer>
+            <pl-answer correct="true">is_strip(s) and is_strip(t)</pl-answer>
+            <pl-answer>not (is_strip(s) and is_strip(t))</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+   <p>
+        Implement <code>longest</code>, which takes a list of integers <code>s</code>. It returns the longest strip whose elements appear in <code>s</code> in order. If two such strips exist, return the one that starts earlier in <code>s</code>. 
+    </p>
+    <pre>
+def longest(s):
+    """Return the longest strip whose elements appear in s in order.
+    >>> longest([4, 2, 3, 5, 6, 4, 6, 5]) # 2 3 4 5 is the longest strip in s
+    [2, 3, 4, 5]
+    >>> longest([4, 2, 3, 5, 6, 4]) # 4 5 6 is as long as 2 3 4 and is earlier
+    [4, 5, 6]
+    >>> longest([2, 4, 6])
+    [2]
+    """
+    if len(s) == 0:
+        return []
+    return max([longest_with_s0(s), _______ ], key= _______ )  # (a), (b)
+
+def longest_with_s0(s):
+    """Return the longest strip in s that starts with s[0]."""
+    result = _______  # (c)
+    for k in s[1:]:
+        if _______:  # (d)
+            result.append(k)
+    return result
+    </pre>
+</pl-question-panel>
+
+<!-- Part (c)(i): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(i) Fill in blank (a):</p>
+        <pl-string-input answers-name="c_i" label="Fill in blank (a):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (c)(ii): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(ii) Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="c_ii">
+            <pl-answer correct="true">len</pl-answer>
+            <pl-answer>len(s)</pl-answer>
+            <pl-answer>s[0]</pl-answer>
+            <pl-answer>lambda i: s[i]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c)(iii): Multiple Choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iii) Fill in blank (c):</p>
+        <pl-multiple-choice answers-name="c_iii">
+            <pl-answer>[]</pl-answer>
+            <pl-answer>[s]</pl-answer>
+            <pl-answer>s[0]</pl-answer>
+            <pl-answer correct="true">s[:1]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c)(iv): String Input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iv) Fill in blank (d):</p>
+        <pl-string-input answers-name="c_iv" label="Fill in blank (d):"></pl-string-input>
+    </div>
+</div>
+
+
+<pl-question-panel>
+    <p>
+        Implement <code>has_strip</code>, which takes a Tree of integers <code>t</code>. It returns whether there is a strip containing the labels along some path from the root to a leaf of <code>t</code>.
+    </p>
+    <pre>
+def has_strip(t):
+    """Return whether the elements of some root-to-leaf path form a strip.
+    >>> has_strip(Tree(1, [Tree(3, [Tree(4)]), Tree(2, [Tree(2), Tree(3)])])) # 1, 2, 3
+    True
+    >>> has_strip(Tree(1, [Tree(3, [Tree(4)]), Tree(2, [Tree(2, [Tree(3)])])]))
+    False
+    >>> has_strip(Tree(1, [Tree(3, [Tree(4)]), Tree(2, [Tree(2)])]))
+    False
+    >>> has_strip(Tree(1, [Tree(2, [Tree(4)]), Tree(3, [Tree(3)])]))
+    False
+    """
+    if t.is_leaf():
+        return _______
+                (a)
+    for b in t.branches:
+        if _______:
+            (b)
+            return True
+    return _______
+            (c)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (d)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(i) Fill in blank (a).</p>
+        <pl-multiple-choice answers-name="has_strip_a">
+            <pl-answer correct="true">True</pl-answer>
+            <pl-answer>False</pl-answer>
+            <pl-answer>t</pl-answer>
+            <pl-answer>t.label</pl-answer>
+            <pl-answer>t.label == t + 1</pl-answer>
+            <pl-answer>t + 1 == t.label</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d)(ii): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(ii) Fill in blank (b).</p>
+        <pl-string-input answers-name="d_ii" label="Write your answer for (b):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (d)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iii) Fill in blank (c).</p>
+        <pl-multiple-choice answers-name="has_strip_c">
+            <pl-answer>True</pl-answer>
+            <pl-answer correct="true">False</pl-answer>
+            <pl-answer>t</pl-answer>
+            <pl-answer>t.label</pl-answer>
+            <pl-answer>t.label == t + 1</pl-answer>
+            <pl-answer>t + 1 == t.label</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        Implement <code>strips</code>, a generator function that takes a <code>Tree</code> of integers <code>t</code>. It yields all strips that contain the labels along a path from the root to a leaf of <code>t</code>.
+    </p>
+    <pre>
+def strips(t):
+    """Yield the paths from the root to a leaf of Tree t that form strips.
+    >>> list(strips(Tree(1, [Tree(3, [Tree(4)]), Tree(2, [Tree(2), Tree(3)])])))
+    [[1, 2, 3]]
+    >>> list(strips(Tree(1, [Tree(2), Tree(2, [Tree(2), Tree(3, [Tree(4)]), Tree(3)])])))
+    [[1, 2], [1, 2, 3, 4], [1, 2, 3]]
+    """
+    if t.is_leaf():
+        yield _______
+               (a)
+    for b in t.branches:
+        if _______:
+            (b)
+            for s in _______:
+                      (c)
+                yield _______
+                       (d)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (e)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(i) Fill in blank (a).</p>
+        <pl-multiple-choice answers-name="strips_a">
+            <pl-answer>None</pl-answer>
+            <pl-answer>t</pl-answer>
+            <pl-answer>t.label</pl-answer>
+            <pl-answer>[t]</pl-answer>
+            <pl-answer correct="true">[t.label]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (e)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(ii) Fill in blank (b).</p>
+        <pl-multiple-choice answers-name="strips_b">
+            <pl-answer>t.label == b.label + 1</pl-answer>
+            <pl-answer correct="true">b.label == t.label + 1</pl-answer>
+            <pl-answer>t.label == b.label + 1 and is_strip(b)</pl-answer>
+            <pl-answer>b.label == t.label + 1 and is_strip(b)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (e)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iii) Fill in blank (c).</p>
+        <pl-multiple-choice answers-name="strips_c">
+            <pl-answer>strips(t)</pl-answer>
+            <pl-answer correct="true">strips(b)</pl-answer>
+            <pl-answer>t.branches</pl-answer>
+            <pl-answer>b.branches</pl-answer>
+            <pl-answer>range(len(t.branches))</pl-answer>
+            <pl-answer>range(len(b.branches))</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (e)(iv): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(iv) Fill in blank (d).</p>
+        <pl-multiple-choice answers-name="strips_d">
+            <pl-answer>s</pl-answer>
+            <pl-answer>t</pl-answer>
+            <pl-answer>t + s</pl-answer>
+            <pl-answer>t.label + s</pl-answer>
+            <pl-answer>[t] + s</pl-answer>
+            <pl-answer correct="true">[t.label] + s</pl-answer>
+            <pl-answer>[t] + [s]</pl-answer>
+            <pl-answer>[t.label] + [s]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<hr>
+
+<!-- Part (e)(v): Multiple choice -->
+<pl-question-panel>
+    <p>
+        This A+ question is not worth any points. It can only affect your course grade
+        if you have a high A and might receive an A+. Finish the rest of the exam first!
+        Fill in the blank of <code>only_strips</code>, which takes a Tree of integers <code>t</code>. 
+        It removes all nodes that are not on a strip path. A strip path is a path from the root to a 
+        leaf whose labels form a strip. You may use functions implemented earlier in this question.
+    </p>
+    <pre>
+def test_only_strips(t):
+    """Call only_strips(t) and then return t. Assume has_strip(t) is True.
+    >>> test_only_strips(Tree(1, [Tree(2), Tree(2, [Tree(2), Tree(3, [Tree(4)]), Tree(3)])]))
+    Tree(1, [Tree(2), Tree(2, [Tree(3, [Tree(4)]), Tree(3)])])
+    >>> test_only_strips(Tree(5, [Tree(6), Tree(6, [Tree(7, [Tree(9)])]), Tree(7)]))
+    Tree(5, [Tree(6)])
+    """
+    only_strips(t)
+    return t
+def only_strips(t):
+    """Remove all nodes of Tree t that are not on a path from the root to a leaf
+    whose labels form a strip. Assume has_strip(t) is True.
+    """
+    t.branches = [b for b in t.branches if _______]
+    has_strip(b) and (only_strips(b) or t.label + 1 == b.label)
+    </pre>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-string-input answers-name="e_v" label="Fill in the blank:"></pl-string-input>
+    </div>
+</div>
+

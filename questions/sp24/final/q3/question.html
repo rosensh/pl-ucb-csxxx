@@ -1,0 +1,326 @@
+<pl-question-panel>
+    <p>
+        A domino is a tile with two numbers, such as 3-4. A 3-4 domino can be flipped around so that it is now a 4-3 domino.
+    </p>
+    <p>
+        (a) Implement the <code>Domino</code> class. A <code>Domino</code> instance is constructed from a two-element list of non-negative integers below 10 that is stored as an instance attribute <code>ns</code>. The <code>align</code> method takes an integer <code>first</code> which must be one of the numbers in <code>ns</code>. It returns the same domino instance on which it was invoked, but first mutates it so that <code>first</code> comes first in <code>ns</code>. A <code>Domino([3, 4])</code> is displayed as <code>3-4</code>.
+    </p>
+    <pre>
+class Domino:
+    """A Domino has two numbers and can be aligned to place one of them first.
+
+    >>> d = Domino([3, 4])
+    >>> original = d
+    >>> d.align(3)
+    3-4
+    >>> d.align(4)
+    4-3
+    >>> d is original # No new Domino instance was created
+    True
+    >>> d # A Domino's order is changed by align
+    4-3
+    """
+    def __init__(self, ns):
+        assert len(ns) == 2 and ns[0] in range(10) and ns[1] in range(10)
+        self.ns = ns
+    def align(self, first):
+        assert _______, 'first must be a number on the domino.'  
+                (a)
+        if _______:  
+            (b)
+            _______  
+              (c)
+        return _______  
+                 (d)
+    def __repr__(self):
+        return _______  
+                (e)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a)(i): Check box -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (a). Select all that apply.</p>
+        <pl-checkbox answers-name="a_i">
+            <pl-answer>first == self.ns</pl-answer>
+            <pl-answer>[first] == self.ns</pl-answer>
+            <pl-answer>first == self.ns[0] or self.ns[1]</pl-answer>
+            <pl-answer correct="true">first in self.ns</pl-answer>
+            <pl-answer>self.first == self.ns</pl-answer>
+            <pl-answer>[self.first] == self.ns</pl-answer>
+            <pl-answer>self.first == self.ns[0] or self.ns[1]</pl-answer>
+            <pl-answer>self.first in self.ns</pl-answer>
+        </pl-checkbox>
+    </div>
+</div>
+
+<!-- Part (a)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (b):</p>
+        <pl-multiple-choice answers-name="a_ii">
+            <pl-answer>first == self.ns[0]</pl-answer>
+            <pl-answer correct="true">first != self.ns[0]</pl-answer>
+            <pl-answer>self.first == self.ns[0]</pl-answer>
+            <pl-answer>self.first != self.ns[0]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(iii): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (c):</p>
+        <pl-string-input answers-name="a_iii" label="Write your answer for (c):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (a)(iv): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iv. Fill in blank (d):</p>
+        <pl-multiple-choice answers-name="a_iv">
+            <pl-answer>Domino</pl-answer>
+            <pl-answer>Domino(self.ns)</pl-answer>
+            <pl-answer>Domino([self.ns])</pl-answer>
+            <pl-answer correct="true">self</pl-answer>
+            <pl-answer>self.ns</pl-answer>
+            <pl-answer>repr(self)</pl-answer>
+            <pl-answer>repr(self.ns)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (a)(v): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>v. Fill in blank (e):</p>
+        <pl-multiple-choice answers-name="a_v">
+            <pl-answer>str(self)</pl-answer>
+            <pl-answer>str(self.ns)</pl-answer>
+            <pl-answer>ns[0] + '-' + ns[1]</pl-answer>
+            <pl-answer>self.ns[0] + '-' + self.ns[1]</pl-answer>
+            <pl-answer>str(self.ns[0] + '-' + self.ns[1])</pl-answer>
+            <pl-answer correct="true">str(self.ns[0]) + '-' + str(self.ns[1])</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (b) Implement <code>drop</code>, which takes a <code>Domino</code> instance <code>d</code> and a list of <code>Domino</code> instances <code>ds</code>. It returns a new list with all of the elements of <code>ds</code> except for <code>d</code>.
+    </p>
+    <pre>
+def drop(d, ds):
+    """Return a new list of dominos with all elements of ds except d.
+    >>> ds = [Domino(ns) for ns in [[5, 2], [3, 4], [5, 5], [3, 4]]]
+    >>> drop(ds[1], ds)
+    [5-2, 5-5, 3-4]
+    >>> drop(ds[3], ds)
+    [5-2, 3-4, 5-5]
+    >>> ds
+    [5-2, 3-4, 5-5, 3-4]
+    """
+    return _______  # (f)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (b)(i): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (f):</p>
+        <pl-string-input answers-name="b_i" label="Write your answer for (f):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (b)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>
+            ii. What is the value of <code>drop(ds[2], drop(ds[1].align(4), ds))</code>, assuming <code>drop</code> and <code>Domino</code> are defined correctly and <code>ds</code> is assigned to:
+        </p>
+        <pre>
+ds = [Domino(ns) for ns in [[5, 2], [3, 4], [5, 5], [4, 3]]]
+        </pre>
+        <pl-multiple-choice answers-name="b_ii">
+            <pl-answer>[5-2]</pl-answer>
+            <pl-answer>[5-2, 3-4]</pl-answer>
+            <pl-answer correct="true">[5-2, 4-3]</pl-answer>
+            <pl-answer>[5-2, 5-5]</pl-answer>
+            <pl-answer>[5-2, 3-4, 5-5]</pl-answer>
+            <pl-answer>[5-2, 4-3, 5-5]</pl-answer>
+            <pl-answer>[5-2, 5-5, 4-3]</pl-answer>
+            <pl-answer>[5-2, 3-4, 5-5, 4-3]</pl-answer>
+            <pl-answer>[5-2, 4-3, 5-5, 4-3]</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (c) Definition: A line of Dominos is a sequence of dominos in which pairs of adjacent numbers on different dominos are equal, such as <code>2-4 4-3 3-3 3-6</code>.
+        <br>
+        Implement <code>longest</code>, which takes a list of <code>Domino</code> instances <code>ds</code>. It returns a string that describes the longest line of dominos that can be formed from <code>ds</code>. This result should contain domino repr strings separated by spaces, such as <code>'2-4 4-3 3-3 3-6'</code>. The dominos described in the result can appear in any order and may be flipped using the <code>align</code> method. If more than one line is longest, describe any of the longest lines. You may call <code>drop</code>.
+    </p>
+    <pre>
+def longest(ds):
+    """Return a string describing the longest line that can be formed from dominos in ds.
+    >>> ds = [Domino(ns) for ns in [[5, 2], [3, 4], [5, 5], [6, 1], [3, 2]]]
+    >>> print(longest(ds))
+    4-3 3-2 2-5 5-5
+    >>> ds = [Domino(ns) for ns in [[1, 2],[1, 2],[3, 2],[3, 2],[3, 2],[4, 3],[4, 3],[4, 3],[6,5]]
+    >>> print(longest(ds))
+    2-1 1-2 2-3 3-2 2-3 3-4 4-3 3-4
+    """
+    def finish(first, rest):
+        s = [ _______ + ' ' + finish( _______ , _______ ) for d in rest if _______ ]  # (g), (h), (i), (j)
+        if not s:
+            return _______  # (k)
+        return max(s, key=_______ )  # (l)
+    candidates = []
+    for first in ds:
+        candidates.append(finish(first, drop(first, ds)))
+        candidates.append(finish(first.align(first.ns[1]), drop(first, ds)))
+    return max(candidates, key=_______ )  # (m)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (c)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (g):</p>
+        <pl-multiple-choice answers-name="c_i">
+            <pl-answer>d</pl-answer>
+            <pl-answer>first</pl-answer>
+            <pl-answer>rest[0]</pl-answer>
+            <pl-answer>repr(d)</pl-answer>
+            <pl-answer correct="true">repr(first)</pl-answer>
+            <pl-answer>repr(rest[0])</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c)(ii): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (h):</p>
+        <pl-string-input answers-name="c_ii" label="Write your answer for (h):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (c)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (i):</p>
+        <pl-multiple-choice answers-name="c_iii">
+            <pl-answer>rest</pl-answer>
+            <pl-answer>rest[1:]</pl-answer>
+            <pl-answer correct="true">drop(d, rest)</pl-answer>
+            <pl-answer>drop(first, rest)</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c)(iv): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iv. Fill in blank (j):</p>
+        <pl-string-input answers-name="c_iv" label="Write your answer for (j):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (c)(v): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>v. Fill in blank (k):</p>
+        <pl-multiple-choice answers-name="c_v">
+            <pl-answer>''</pl-answer>
+            <pl-answer>None</pl-answer>
+            <pl-answer>first</pl-answer>
+            <pl-answer correct="true">repr(first)</pl-answer>
+            <pl-answer>max(rest)</pl-answer>
+            <pl-answer>repr(max(rest))</pl-answer>
+            <pl-answer>longest(ds[1:])</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c)(vi): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>vi. Fill in blanks (l) and (m) with the same expression:</p>
+        <pl-multiple-choice answers-name="c_vi">
+            <pl-answer correct="true">len</pl-answer>
+            <pl-answer>max</pl-answer>
+            <pl-answer>str</pl-answer>
+            <pl-answer>repr</pl-answer>
+            <pl-answer>lambda s: s</pl-answer>
+            <pl-answer>lambda s: s[0]</pl-answer>
+            <pl-answer>lambda s: len(s[0])</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<pl-question-panel>
+    <p>
+        (d) The Domino table has one row per domino that gives its unique id (number) and the numbers appearing on the domino m and n (numbers).
+    </p>
+    <pre>
+CREATE TABLE dominos AS
+SELECT 0 AS id, 3 AS m, 2 AS n UNION
+SELECT 1 , 3 , 1 UNION
+SELECT 2 , 6 , 3 UNION
+SELECT 3 , 4 , 4 UNION
+SELECT 4 , 3 , 2 UNION
+SELECT 5 , 2 , 6;
+
+SELECT a.id, a.m, a.n, COUNT(*) 
+FROM dominos AS a, dominos AS b
+WHERE _______ AND (_______)  # (o), (p)
+GROUP BY _______;            # (q)
+    </pre>
+</pl-question-panel>
+
+<!-- Part (d)(i): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>i. Fill in blank (o):</p>
+        <pl-multiple-choice answers-name="d_i">
+            <pl-answer>a.id = b.id</pl-answer>
+            <pl-answer>a.id < b.id</pl-answer>
+            <pl-answer correct="true">a.id != b.id</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d)(ii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>ii. Fill in blank (p):</p>
+        <pl-multiple-choice answers-name="d_ii">
+            <pl-answer>a.m = b.m OR a.n = b.n</pl-answer>
+            <pl-answer>a.m = b.m AND a.n = b.n</pl-answer>
+            <pl-answer correct="true">a.n = b.m OR a.n = b.n</pl-answer>
+            <pl-answer>a.n = b.m AND a.n = b.n</pl-answer>
+            <pl-answer>a.m = b.n OR a.n = b.n</pl-answer>
+            <pl-answer>a.m = b.n AND a.n = b.n</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d)(iii): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>iii. Fill in blank (q):</p>
+        <pl-multiple-choice answers-name="d_iii">
+            <pl-answer>m</pl-answer>
+            <pl-answer>a.m</pl-answer>
+            <pl-answer>b.m</pl-answer>
+            <pl-answer>id</pl-answer>
+            <pl-answer correct="true">a.id</pl-answer>
+            <pl-answer>b.id</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+

@@ -1,0 +1,63 @@
+<pl-question-panel>
+    <p>Assume the following code has been executed already.</p>
+    <pre>
+one = 1
+def choose(one):
+    if big(one):
+        print('A')
+    if huge(one):
+        print('B')
+    elif big(one) or huge(one):
+        print('C')
+    if big(one) or print('D'):
+        print('E')
+    else:
+        print('F')
+big = lambda x: x >= one
+huge = lambda x: x > one
+def which():
+    one = 3
+    def this():
+        return one
+    return one + 1
+    return this
+one = 4
+    </pre>
+</pl-question-panel>
+
+<!-- Part (a): Check Box -->
+<pl-question-panel>
+    <p>(a) Which lines are displayed by the interactive Python interpreter after evaluating <code>choose(one + one)</code>? Select all that apply.</p>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-checkbox answers-name="choose_output">
+            <pl-answer correct="true">A</pl-answer>
+            <pl-answer correct="true">B</pl-answer>
+            <pl-answer>C</pl-answer>
+            <pl-answer>D</pl-answer>
+            <pl-answer correct="true">E</pl-answer>
+            <pl-answer>None</pl-answer>
+            <pl-answer>None of the above</pl-answer>
+        </pl-checkbox>
+    </div>
+</div>
+
+<!-- Part (b): Multiple Choice -->
+<pl-question-panel>
+    <p>(b) What is displayed by the interactive Python interpreter after evaluating <code>which()()</code>?</p>
+</pl-question-panel>
+
+<div class="card my-2">
+    <div class="card-body">
+        <pl-multiple-choice answers-name="which_output">
+            <pl-answer>2</pl-answer>
+            <pl-answer correct="true">3</pl-answer>
+            <pl-answer>4</pl-answer>
+            <pl-answer>5</pl-answer>
+            <pl-answer>A function</pl-answer>
+            <pl-answer>An error occurs before anything is displayed</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>

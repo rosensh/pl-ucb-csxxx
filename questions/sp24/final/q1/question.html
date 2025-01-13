@@ -1,0 +1,74 @@
+<pl-question-panel>
+    <p>
+        Assume the following code has been executed. No error occurs.
+    </p>
+    <pre>
+s = [2, 4]
+t, u = [2, 0, s], [2, 0, s]
+t.append(5)
+u[2].extend(s)
+v = t[2]
+t[2] = [6, 7]
+    </pre>
+    <p>Write the output printed for each expression below. Hint: Draw an environment diagram!</p>
+</pl-question-panel>
+
+<!-- Part (a): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(a) <code>print(s is u)</code></p>
+        <pl-multiple-choice answers-name="a">
+            <pl-answer>True</pl-answer>
+            <pl-answer correct="true">False</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (b): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(b) <code>print(s is v)</code></p>
+        <pl-multiple-choice answers-name="b">
+            <pl-answer correct="true">True</pl-answer>
+            <pl-answer>False</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (c): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(c) <code>print(s is u[2])</code></p>
+        <pl-multiple-choice answers-name="c">
+            <pl-answer correct="true">True</pl-answer>
+            <pl-answer>False</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (d): Multiple choice -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(d) <code>print(s is t[2])</code></p>
+        <pl-multiple-choice answers-name="d">
+            <pl-answer correct="true">False</pl-answer>
+            <pl-answer>True</pl-answer>
+        </pl-multiple-choice>
+    </div>
+</div>
+
+<!-- Part (e): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(e) <code>print(t)</code></p>
+        <pl-string-input answers-name="e" label="Write the output for (e):"></pl-string-input>
+    </div>
+</div>
+
+<!-- Part (f): String input -->
+<div class="card my-2">
+    <div class="card-body">
+        <p>(f) <code>print(u)</code></p>
+        <pl-string-input answers-name="f" label="Write the output for (f):"></pl-string-input>
+    </div>
+</div>
